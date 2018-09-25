@@ -5,7 +5,8 @@ const nodeMailer = require('nodemailer');
 
 // Express Setup
 const app = express();
-const portNum = 3000;
+const portNum = process.env.PORT || 8080; // for Heroku
+// const portNum = 3000; // for local
 
 // Body Parser Setup
 app.use(bodyParser.urlencoded({extended: false}));
