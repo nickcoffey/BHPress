@@ -16,29 +16,32 @@ app.use(bodyParser.json());
 var transporter = nodeMailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'bhpress@gmail.com',
-        pass: 'password'
+        user: 'bhpresssite@gmail.com',
+        pass: 'printing123'
     }
 });
 
 // NodeMailer API Call
-app.post('/send', (req, res) => {
+app.post('/send-email', (req, res) => {
     console.log(req.body);
-    /*const mailOptions = {
-        from: 'bhpress@gmail.com',
-        to: 'jeff@email.com',
+    res.setHeader('Content-Type', 'application/json');
+    const mailOptions = {
+        from: 'bhpresssite@gmail.com',
+        to: 'njc3n3@gmail.com',
         subject: 'Subject including client name',
-        html: '<p>Body text and image if there.</p>'
+        html: `<h2>Body text and image if there.</h2><p>${req.body.details}</p>`
     };
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
+            res.send(JSON.stringify({ msg: 'Failure' }));
             console.log(error);
             // Send error to screen giving Jeff's email
         } else {
+            res.send(JSON.stringify({ msg: 'Success' }));
             console.log(info);
             // Send success message to screen
         }
-    });*/
+    });
 });
 
 // Serving static files and setting home page

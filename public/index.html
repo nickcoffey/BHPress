@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
 
     <div class="header">
@@ -25,7 +26,7 @@
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error porro fugit voluptatem repudiandae sit totam, quod ipsam quisquam eum facere quos optio beatae facilis odio mollitia reprehenderit nemo dolorem fuga.</p>
         <hr>
         <h2>Contact Us</h2>
-        <form action="send" method="POST">
+        <form>
             <p>
                 <label for="fname">First Name<span class="ast">*</span></label>
                 <br>
@@ -52,7 +53,7 @@
                 <textarea name="details" id="details" rows="4" cols="50" required></textarea>
             </p>
             <p>
-                <button type="submit" class="submitButton">Submit</button>
+                <button type="button" onclick="sendMail()" class="submitButton">Submit</button>
             </p>
         </form>
     </div>

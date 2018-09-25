@@ -18,3 +18,37 @@ function openGallery(evt, galleryID) {
     document.getElementById(galleryID).className = "gallery shown";
     evt.currentTarget.className += " active";
 }
+
+function sendMail() {
+    var request = $.ajax({
+        type: "POST",
+        url: "/send-email",
+        data: {
+            fname: $("#fname").val(),
+            lname: $("#lname").val(),
+            email: $("#email").val(),
+            phone: $("#phone").val(),
+            details: $("#details").val(),
+        },
+        dataType: "json"
+    });
+
+    // Email sent
+    request.done((res) => {
+        console.log(res);
+        clearMailFields();
+    });
+
+    // Email failed
+    request.fail((jqXHR, textStatus) => {
+        console.log(textStatus);
+    });
+}
+
+function clearMailFields() {
+    $("#fname").val() = "";
+    $("#lname").val() = "";
+    $("#email").val() = "";
+    $("#phone").val() = "";
+    $("#details").val() = "";
+}
