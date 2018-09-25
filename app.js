@@ -6,7 +6,7 @@ const nodeMailer = require('nodemailer');
 // Express Setup
 const app = express();
 const portNum = process.env.PORT || 8080; // for Heroku
-// const portNum = 3000; // for local
+//const portNum = 3000; // for local
 
 // Body Parser Setup
 app.use(bodyParser.urlencoded({extended: false}));
@@ -23,21 +23,26 @@ var transporter = nodeMailer.createTransport({
 
 // NodeMailer API Call
 app.post('/send-email', (req, res) => {
-    console.log(req.body);
+    var emailHtml = `<p>${req.body.details}</p><h2>Contact Info</h2><p><strong>Email: </strong>${req.body.email}</p>`;
+    var phone = req.body.phone;
+    if (phone != null || phone != '' || phone != undefined) {
+        emailHtml + `<p><strong>Phone: </strong>${req.body.phone}</p>`;
+    }
+
     res.setHeader('Content-Type', 'application/json');
     const mailOptions = {
         from: 'bhpresssite@gmail.com',
         to: 'njc3n3@gmail.com',
-        subject: 'Subject including client name',
-        html: `<h2>Body text and image if there.</h2><p>${req.body.details}</p>`
+        subject: `${req.body.fname} ${req.body.lname}`,
+        html: emailHtml
     };
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            res.send(JSON.stringify({ msg: 'Failure' }));
+            res.send(JSON.stringify({code: 500, msg: "Email failed to send. Please try again or email us directly at email@email.com"}));
             console.log(error);
             // Send error to screen giving Jeff's email
         } else {
-            res.send(JSON.stringify({ msg: 'Success' }));
+            res.send(JSON.stringify({code: 200, msg: 'Email sent. We will be in touch shortly.'}));
             console.log(info);
             // Send success message to screen
         }

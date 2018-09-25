@@ -35,20 +35,28 @@ function sendMail() {
 
     // Email sent
     request.done((res) => {
-        console.log(res);
-        clearMailFields();
+        $("#emailAlert").text(res.msg);
+        if (res.code == 200) {
+            $("#emailAlert").addClass("success");
+        } else if(res.code == 500) {
+            $("#emailAlert").addClass("failure");
+        }
     });
 
     // Email failed
-    request.fail((jqXHR, textStatus) => {
-        console.log(textStatus);
+    request.fail((jqXHR, res) => {
+        console.log(res.msg);
+        $("#emailAlert").text("Email failed to send. Please try again or email us directly at email@email.com");
+        $("#emailAlert").addClass("failure");
     });
+
+    clearMailFields();
 }
 
 function clearMailFields() {
-    $("#fname").val() = "";
-    $("#lname").val() = "";
-    $("#email").val() = "";
-    $("#phone").val() = "";
-    $("#details").val() = "";
+    $("#fname").text("");
+    $("#lname").text("");
+    $("#email").text("");
+    $("#phone").text("");
+    $("#details").text("");
 }

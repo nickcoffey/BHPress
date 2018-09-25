@@ -20,6 +20,11 @@ body {
 textarea {
   font-family: inherit;
   font-size: inherit;
+  width: 30em;
+  height: 4em;
+  /* margin-left: auto;
+  margin-right: auto;
+  display: block; */
 }
 
 input {
@@ -89,7 +94,7 @@ label {
   padding: 1%;
   border: none;
   /*border-style: solid;
-    border-color: black;*/
+  border-color: red;*/
   position: absolute;
   visibility: hidden;
   opacity: 0;
@@ -146,9 +151,38 @@ img:active {
   -ms-transform: scale(2);
 }
 
+.alert {
+  visibility: hidden;
+  opacity: 0;
+  color: #ffffff;
+  padding: 1%;
+  /* border: red solid; */
+
+  transition: visibility 0s, opacity 0.25s ease-in-out;
+  -webkit-transition: visibility 0s, opacity 0.25s ease-in-out;
+  -moz-transition: visibility 0s, opacity 0.25s ease-in-out;
+  -ms-transition: visibility 0s, opacity 0.25s ease-in-out;
+}
+
+.alert.success {
+  visibility: visible;
+  opacity: 1;
+  background-color: #4ff278;
+}
+
+.alert.failure {
+  visibility: visible;
+  opacity: 1;
+  background-color: red;
+}
+
 @media screen and (max-width: 750px) {
   .topnav .navlink {
     display: none;
+  }
+  textarea {
+    width: 11em;
+    height: 4em;
   }
   /*.topnav a.icon {
     float: right;
