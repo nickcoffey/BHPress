@@ -2,6 +2,37 @@ body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
+
+  opacity: 0;
+  animation-name: bodyAnimation;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bodyAnimation {
+  0% {opacity: 0;}
+  25% {opacity: 0.5;}
+  50% {opacity: 0.75;}
+  75% {opacity: 0.9;}
+  100% {opacity: 1;}
+}
+
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+label {
+  font-weight: bold;
+}
+
+.ast {
+  color: red;
 }
 
 .header {
@@ -30,7 +61,6 @@ body {
   outline: none;
   cursor: pointer;
   color: black;
-  text-align: center;
   padding: 0.75% 2%;
   width: 10%;
   text-decoration: none;
@@ -73,6 +103,29 @@ body {
 .gallery.shown {
   visibility: visible;
   opacity: 1;
+}
+
+.submitButton {
+  background-color: #4ff278;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.75% 2%;
+  width: 10%;
+  text-decoration: none;
+  font-size: 100%;
+
+  transition: background-color 0.25s ease-in-out;
+  -webkit-transition: background-color 0.25s ease-in-out;
+  -moz-transition: background-color 0.25s ease-in-out;
+  -ms-transition: background-color 0.25s ease-in-out;
+}
+
+.submitButton:hover {
+  background-color: darkgrey;
+  color: black;
 }
 
 img {

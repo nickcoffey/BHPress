@@ -21,8 +21,40 @@
     </div>
 
     <div class="gallery shown" id="gallery1">
-        <h2>About Tab</h2>
+        <h2>About Us</h2>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error porro fugit voluptatem repudiandae sit totam, quod ipsam quisquam eum facere quos optio beatae facilis odio mollitia reprehenderit nemo dolorem fuga.</p>
+        <hr>
+        <h2>Contact Us</h2>
+        <form action="send" method="POST">
+            <p>
+                <label for="fname">First Name<span class="ast">*</span></label>
+                <br>
+                <input type="text" name="fname" id="fname" required>
+            </p>
+            <p>
+                <label for="lname">Last Name<span class="ast">*</span></label>
+                <br>
+                <input type="text" name="lname" id="lname" required>
+            </p>
+            <p>
+                <label for="email">Email<span class="ast">*</span></label>
+                <br>
+                <input type="email" name="email" id="email" required>
+            </p>
+            <p>
+                <label for="phone">Phone Number</label>
+                <br>
+                <input type="tel" name="phone" id="phone">
+            </p>
+            <p>
+                <label for="details">Details<span class="ast">*</span></label>
+                <br>
+                <textarea name="details" id="details" rows="4" cols="50" required></textarea>
+            </p>
+            <p>
+                <button type="submit" class="submitButton">Submit</button>
+            </p>
+        </form>
     </div>
     <div class="gallery" id="gallery2">
         <img src="images/shirts/cookie-muncher.jpg" alt="Cookie Muncher">
