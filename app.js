@@ -17,7 +17,7 @@ var transporter = nodeMailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'bhpresssite@gmail.com',
-        pass: 'printing123'
+        pass: process.env.BHPRESS_PASS
     }
 });
 

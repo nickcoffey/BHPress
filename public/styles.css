@@ -1,35 +1,165 @@
+/********************************************************************** GENERAL BODY **********************************************************************/
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-
-  opacity: 0;
-  animation-name: bodyAnimation;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    opacity: 0;
+    animation-name: bodyAnimation;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    /* width: 1200px; for debug*/
 }
 
 @keyframes bodyAnimation {
-  0% {opacity: 0;}
-  25% {opacity: 0.5;}
-  50% {opacity: 0.75;}
-  75% {opacity: 0.9;}
-  100% {opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.75;
+    }
+    75% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
+/* p, h1, button, div, h2, hr, input {
+  border: 1px solid red;
+} for debug */
+
+
+/********************************************************************** HEADER & NAVIGATION **********************************************************************/
+.header {
+    background-color: #41B3A3;
+    color: white;
+}
+
+.header h1 {
+    font-size: 350%;
+}
+
+.topnav .navlink {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: black;
+    padding: 0.75% 2%;
+    width: 10%;
+    text-decoration: none;
+    font-size: 100%;
+    transition: background-color 0.25s ease-in-out;
+}
+
+#navlink1 {
+  border-bottom-left-radius: 15px;
+}
+
+#navlink5 {
+  border-bottom-right-radius: 15px;
+}
+
+.topnav .navlink:hover {
+    background-color: #41B3A3;
+    color: white;
+}
+
+.topnav .navlink.active {
+    background-color: #41B3A3;
+    color: white;
+}
+
+/********************************************************************** IMAGE GALLERIES **********************************************************************/
+/* .row {
+  position: relative;
+} */
+
+.gallery {
+    margin-top: 1.5em; 
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.25s ease-in-out;
+}
+
+.gallery.shown {
+    visibility: visible;
+    opacity: 1;
+}
+
+#gallery1 {
+  z-index: 0;
+}
+
+#gallery2 {
+  z-index: 1;
+}
+
+#gallery3 {
+  z-index: 2;
+}
+
+#gallery4 {
+  z-index: 3;
+}
+
+#gallery5 {
+  z-index: 4;
+}
+
+img {
+    border: 0.1em solid #41B3A3;
+    border-radius: 15px;
+    padding: 0.1em;
+    width: 10em;
+    transition: -transform, border, border-radius 0.25s ease;
+}
+
+img:hover {
+    border: 0.1em solid black;
+    border-radius: 0px;
+}
+
+img:active {
+    transform: scale(2);
+}
+
+/********************************************************************** FORMS **********************************************************************/
 textarea {
   font-family: inherit;
   font-size: inherit;
-  width: 30em;
-  height: 4em;
-  /* margin-left: auto;
-  margin-right: auto;
-  display: block; */
+  width: 25em;
+  height: 5em;
+  border-radius: 15px;
+  outline: none;
+  border-color: black;
+  transition: box-shadow, border-radius 0.25s ease-in-out;
+}
+
+textarea:focus {
+  box-shadow: 0 0 10px #41B3A3;
+  border-radius: 0px;
 }
 
 input {
   font-family: inherit;
   font-size: inherit;
+  border-radius: 15px;
+  outline: none;
+  border: 1px solid black;
+  width: 20em;
+  height: 1.5em;
+  transition: box-shadow, border-radius 0.25s ease-in-out;
+}
+
+input:focus {
+  box-shadow: 0 0 10px #41B3A3;
+  border-radius: 0px;
 }
 
 label {
@@ -40,152 +170,144 @@ label {
   color: red;
 }
 
-.header {
-  background-color: #4ff278;
-  color: white;
-  padding: 1%;
-  border: none;
-  /*border-style: solid;
-    border-color: black;*/
-}
-
-.header h1 {
-  font-size: 400%;
-}
-
-.topnav {
-  overflow: hidden;
-}
-
-.topnav .navlink {
-  display: inline-block;
-  background-color: inherit;
-  border: none;
-  /*border-style: solid;
-    border-color: black;*/
-  outline: none;
-  cursor: pointer;
-  color: black;
-  padding: 0.75% 2%;
-  width: 10%;
-  text-decoration: none;
-  font-size: 100%;
-
-  transition: background-color 0.25s ease-in-out;
-  -webkit-transition: background-color 0.25s ease-in-out;
-  -moz-transition: background-color 0.25s ease-in-out;
-  -ms-transition: background-color 0.25s ease-in-out;
-}
-
-.topnav .navlink:hover {
-  background-color: #4ff278;
-  color: white;
-}
-
-.topnav .navlink.active {
-  background-color: #4ff278;
-  color: white;
-}
-
-.gallery {
-  margin-top: 1%;
-  margin-left: 20%;
-  margin-right: 20%;
-  padding: 1%;
-  border: none;
-  /*border-style: solid;
-  border-color: red;*/
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-
-  transition: visibility 0s, opacity 0.25s ease-in-out;
-  -webkit-transition: visibility 0s, opacity 0.25s ease-in-out;
-  -moz-transition: visibility 0s, opacity 0.25s ease-in-out;
-  -ms-transition: visibility 0s, opacity 0.25s ease-in-out;
-}
-
-.gallery.shown {
-  visibility: visible;
-  opacity: 1;
-}
-
 .submitButton {
-  background-color: #4ff278;
-  color: white;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  text-align: center;
-  padding: 0.75% 2%;
-  width: 10%;
-  text-decoration: none;
-  font-size: 100%;
-
-  transition: background-color 0.25s ease-in-out;
-  -webkit-transition: background-color 0.25s ease-in-out;
-  -moz-transition: background-color 0.25s ease-in-out;
-  -ms-transition: background-color 0.25s ease-in-out;
+background-color: #41B3A3;
+color: white;
+border: none;
+outline: none;
+border-radius: 15px;
+cursor: pointer;
+padding: 0.75% 2%;
+width: 10%;
+text-decoration: none;
+font-size: 100%;
+transition: background-color 0.25s ease-in-out;
 }
 
 .submitButton:hover {
-  background-color: darkgrey;
-  color: black;
+background-color: darkgrey;
+color: black;
 }
 
-img {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px;
-  transition: -transform 0.25s ease;
-  -webkit-transition: -webkit-transform 0.25s ease;
-  -moz-transition: -moz-transform 0.25s ease;
-  -ms-transition: -ms-transform 0.25s ease;
-}
-
-img:active {
-  transform: scale(2);
-  -webkit-transform: scale(2);
-  -moz-transform: scale(2);
-  -ms-transform: scale(2);
-}
-
+/********************************************************************** ALERTS **********************************************************************/
 .alert {
-  visibility: hidden;
-  opacity: 0;
-  color: #ffffff;
-  padding: 1%;
-  /* border: red solid; */
-
-  transition: visibility 0s, opacity 0.25s ease-in-out;
-  -webkit-transition: visibility 0s, opacity 0.25s ease-in-out;
-  -moz-transition: visibility 0s, opacity 0.25s ease-in-out;
-  -ms-transition: visibility 0s, opacity 0.25s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    color: #ffffff;
+    /* border: red solid; */
+    transition: visibility 0s, opacity 0.25s ease-in-out;
 }
 
 .alert.success {
-  visibility: visible;
-  opacity: 1;
-  background-color: #4ff278;
+    visibility: visible;
+    opacity: 1;
+    background-color: #41B3A3;
 }
 
 .alert.failure {
-  visibility: visible;
-  opacity: 1;
-  background-color: red;
+    visibility: visible;
+    opacity: 1;
+    background-color: red;
 }
 
-@media screen and (max-width: 750px) {
+
+/********************************************************************** COLUMN SETUP **********************************************************************/
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+[class*="col-"] {
+    float: left;
+    /*** only for visual aid ***/
+    /* padding: 0.938em;
+    border: 0.1em solid red; */
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/********************************************************************** SCREEN SIZE ADJUSTMENTS **********************************************************************/
+/* for mobile phones */
+@media only screen and (max-width: 768px) {
+  [class*="col-"] {
+      width: 100%;
+  }
+  .submitButton {
+      width: 20%;
+  }
+  .header h1 {
+    font-size: 250%;
+  }
   .topnav .navlink {
-    display: none;
+    padding: 3% 2%;
+    width: 19%;
+    font-size: 60%
   }
   textarea {
-    width: 11em;
-    height: 4em;
+    width: 20em;
+  } 
+  input {
+    width: 15em;
   }
-  /*.topnav a.icon {
-    float: right;
-    display: block;
-  }*/
+}
+/* for tablets */
+@media only screen and (min-width: 768px) and (max-width: 1205px) {
+  /* mobile nav here */
+  .submitButton {
+      width: 15%;
+  }
+  .header h1 {
+    font-size: 300%;
+  }
+  .topnav .navlink {
+    padding: 1.5% 2%;
+    width: 15%;
+  }
 }

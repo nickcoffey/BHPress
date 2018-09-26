@@ -3,9 +3,9 @@ function openGallery(evt, galleryID) {
     var i, galleryContent, galleryLinks;
 
     // Get all elements with class="gallery shown" and hide them
-    galleryContent = document.getElementsByClassName("gallery shown");
+    galleryContent = document.getElementsByClassName("gallery col-12 shown");
     for (i = 0; i < galleryContent.length; i++) {
-        galleryContent[i].className = "gallery";
+        galleryContent[i].className = "gallery col-12";
     }
 
     // Get all elements with class="galleryLinks" and remove the class "active"
@@ -15,7 +15,7 @@ function openGallery(evt, galleryID) {
     }
 
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(galleryID).className = "gallery shown";
+    document.getElementById(galleryID).className = "gallery col-12 shown";
     evt.currentTarget.className += " active";
 }
 
