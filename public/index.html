@@ -1,106 +1,196 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>BH Press</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootswatch CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <script src="jquery-3.3.1.min.js"></script>
-    <script src="scripts.js"></script>
-    <div class="row header">
-        <div class="col-12">
-            <h1>BH Press</h1>
-        </div>
-    </div>
-    <div class="row topnav">
-        <button class="navlink active" id="navlink1" onclick="openGallery(event, 'gallery1')">About</button><!--
-        --><button class="navlink" id="navlink2" onclick="openGallery(event, 'gallery2')">Shirts</button><!--
-        --><button class="navlink" id="navlink3" onclick="openGallery(event, 'gallery3')">Hats</button><!--
-        --><button class="navlink" id="navlink4" onclick="openGallery(event, 'gallery4')">Posters</button><!--
-        --><button class="navlink" id="navlink5" onclick="openGallery(event, 'gallery5')">Tote Bags</button>
+    <!----------------------------------------------------------------------- DESKTOP HEADER -------------------------------------------------------------------------->
+    <h1 class="d-none d-md-block">
+        BH Press
+    </h1>
+
+    <!----------------------------------------------------------------------- NAVBAR -------------------------------------------------------------------------->
+    <div id="navdiv" class="d-block d-md-none">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand">BH Press</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#shirts">Shirts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#hats">Hats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#posters">Posters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#totebags">Tote Bags</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
 
-    <div class="row">
-        <div class="gallery col-12 shown" id="gallery1">
-            <h2>About Us</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error porro fugit voluptatem repudiandae sit totam, quod ipsam quisquam eum facere quos optio beatae facilis odio mollitia reprehenderit nemo dolorem fuga.</p>
-            <hr>
-            <p class="alert" id="emailAlert"></p>
-            <h2>Contact Us</h2>
-            <form>
-                <p>
-                    <label for="fname">First Name<span class="ast">*</span></label>
-                    <br>
-                    <input type="text" name="fname" id="fname" required>
-                </p>
-                <p>
-                    <label for="lname">Last Name<span class="ast">*</span></label>
-                    <br>
-                    <input type="text" name="lname" id="lname" required>
-                </p>
-                <p>
-                    <label for="email">Email<span class="ast">*</span></label>
-                    <br>
-                    <input type="email" name="email" id="email" required>
-                </p>
-                <p>
-                    <label for="phone">Phone Number</label>
-                    <br>
-                    <input type="tel" name="phone" id="phone">
-                </p>
-                <p>
-                    <label for="details">Message<span class="ast">*</span></label>
-                    <br>
-                    <textarea name="details" id="details" required></textarea>
-                </p>
-                <p>
-                    <button type="button" onclick="sendMail()" class="submitButton">Submit</button>
-                </p>
-            </form>
+    <div class="container">
+        <!----------------------------------------------------------------------- TABS -------------------------------------------------------------------------->
+        <div id="tabdiv" class="d-none d-md-block">
+            <ul class="nav nav-tabs justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#shirts">Shirts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#hats">Hats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#posters">Posters</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#totebags">Tote Bags</a>
+                </li>
+            </ul>
         </div>
-        <div class="gallery col-12" id="gallery2">
-            <img src="images/shirts/cookie-muncher.jpg" alt="Cookie Muncher">
-            <img src="images/shirts/mountain-bear.jpg" alt="Mountain Bear">
-            <img src="images/shirts/speed-is-relative.jpg" alt="Speed Is Relative">
-            <img src="images/shirts/fuji.jpg" alt="Fuji">
-            <img src="images/shirts/music-smile.jpg" alt="Music Smile">
-            <img src="images/shirts/just-dont.jpg" alt="Just Don't">
-            <img src="images/shirts/cosmic-downpour.jpg" alt="Cosmic Downpour">
-            <img src="images/shirts/nature-guitar.jpg" alt="Nature Guitar">
+
+        <!----------------------------------------------------------------------- ALERTS & SPINNER ------------------------------------------------------------------------>
+        <div id="mail-loader" class="loader"></div>
+        <div id="success-alert" class="alert alert-info text-center">
+            <h4 class="alert-heading">Email sent!</h4>
+            <p class="mb-0">Email sent. We will be in touch shortly.</p>
         </div>
-        <div class="gallery col-12" id="gallery3">
-            <img src="images/hats/capitals.jpg" alt="Capitals">
-            <img src="images/hats/custom.jpg" alt="Custom">
-            <img src="images/hats/dodgers.jpg" alt="Dodgers">
-            <img src="images/hats/melin-voyage.jpg" alt="Melin Voyage">
-            <img src="images/hats/puerto-rico.jpg" alt="Puerto Rico">
-            <img src="images/hats/raiders.jpg" alt="Raiders">
-            <img src="images/hats/rockies.jpg" alt="Rockies">
-            <img src="images/hats/yankees.jpg" alt="Yankees">
+        <div id="fail-alert" class="alert alert-warning text-center">
+            <h4 class="alert-heading">Email failed</h4>
+            <p class="mb-0">Please try again or email us directly.</p>
         </div>
-        <div class="gallery col-12" id="gallery4">
-            <img src="images/posters/america.jpg" alt="America">
-            <img src="images/posters/beer.jpg" alt="Beer">
-            <img src="images/posters/chat-noir.jpg" alt="Chat Noir">
-            <img src="images/posters/coffee.jpg" alt="Coffee">
-            <img src="images/posters/jack-daniels.jpg" alt="Jack Daniels">
-            <img src="images/posters/roadkill.jpg" alt="Roadkill">
-            <img src="images/posters/smith-and-wesson.jpg" alt="Smith & Wesson">
-            <img src="images/posters/texaco.jpg" alt="Texaco">
-        </div>
-        <div class="gallery col-12" id="gallery5">
-            <img src="images/bags/ace.jpg" alt="Ace">
-            <img src="images/bags/fusion.jpg" alt=" Fusion">
-            <img src="images/bags/incognito.jpg" alt="Incognito">
-            <img src="images/bags/red-roof.jpg" alt="Red Roof">
-            <img src="images/bags/red-rooster.jpg" alt="Red Rooster">
-            <img src="images/bags/sunray-cafe.jpg" alt="Sunray Cafe">
-            <img src="images/bags/west-star.jpg" alt="West Star">
-            <img src="images/bags/xl-productions.jpg" alt="XL Productions">
+
+        <!----------------------------------------------------------------------- TAB CONTENT -------------------------------------------------------------------------->
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade text-center show active" id="about">
+                <h2>About Us</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error porro fugit voluptatem repudiandae sit totam, quod ipsam quisquam eum facere quos optio beatae facilis odio mollitia reprehenderit nemo dolorem fuga.</p>
+                <hr>
+                <p class="alert" id="emailAlert"></p>
+                <h2>Contact Us</h2>
+                <form class="needs-validation" novalidate>
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="fname">First name<span class="ast">*</span></label>
+                            <input type="text" class="form-control" id="fname" placeholder="First">
+                            <div id="fname-required" class="invalid-feedback">First name is required.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last name<span class="ast">*</span></label>
+                            <input type="text" class="form-control" id="lname" placeholder="Last">
+                            <div id="lname-required" class="invalid-feedback">Last name is required.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address<span class="ast">*</span></label>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                            <div id="email-required" class="invalid-feedback">Email address is required.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Contact Number</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="details">Message<span class="ast">*</span></label>
+                            <textarea class="form-control" id="details" rows="3" placeholder="A brief message..."></textarea>
+                            <div id="message-required" class="invalid-feedback">A brief message is required.</div>
+                        </div>
+                        <button type="button" class="btn btn-lg btn-primary" onclick="sendMail()">Submit</button>
+                        <button type="reset" class="btn btn-lg btn-secondary">Clear</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade text-center" id="shirts">
+                <div class="d-block d-md-none">
+                    <h2>Shirts</h2>
+                    <hr>
+                </div>
+                <img src="images/shirts/cookie-muncher.jpg" alt="Cookie Muncher">
+                <img src="images/shirts/mountain-bear.jpg" alt="Mountain Bear">
+                <img src="images/shirts/speed-is-relative.jpg" alt="Speed Is Relative">
+                <img src="images/shirts/fuji.jpg" alt="Fuji">
+                <img src="images/shirts/music-smile.jpg" alt="Music Smile">
+                <img src="images/shirts/just-dont.jpg" alt="Just Don't">
+                <img src="images/shirts/cosmic-downpour.jpg" alt="Cosmic Downpour">
+                <img src="images/shirts/nature-guitar.jpg" alt="Nature Guitar">
+            </div>
+            <div class="tab-pane fade text-center" id="hats">
+                <div class="d-block d-md-none">
+                    <h2>Hats</h2>
+                    <hr>
+                </div>
+                <img src="images/hats/capitals.jpg" alt="Capitals">
+                <img src="images/hats/custom.jpg" alt="Custom">
+                <img src="images/hats/dodgers.jpg" alt="Dodgers">
+                <img src="images/hats/melin-voyage.jpg" alt="Melin Voyage">
+                <img src="images/hats/puerto-rico.jpg" alt="Puerto Rico">
+                <img src="images/hats/raiders.jpg" alt="Raiders">
+                <img src="images/hats/rockies.jpg" alt="Rockies">
+                <img src="images/hats/yankees.jpg" alt="Yankees">
+            </div>
+            <div class="tab-pane fade text-center" id="posters">
+                <div class="d-block d-md-none">
+                    <h2>Posters</h2>
+                    <hr>
+                </div>
+                <img src="images/posters/america.jpg" alt="America">
+                <img src="images/posters/beer.jpg" alt="Beer">
+                <img src="images/posters/chat-noir.jpg" alt="Chat Noir">
+                <img src="images/posters/coffee.jpg" alt="Coffee">
+                <img src="images/posters/jack-daniels.jpg" alt="Jack Daniels">
+                <img src="images/posters/roadkill.jpg" alt="Roadkill">
+                <img src="images/posters/smith-and-wesson.jpg" alt="Smith & Wesson">
+                <img src="images/posters/texaco.jpg" alt="Texaco">
+            </div>
+            <div class="tab-pane fade text-center" id="totebags">
+                <div class="d-block d-md-none">
+                    <h2>Tote Bags</h2>
+                    <hr>
+                </div>
+                <img src="images/bags/ace.jpg" alt="Ace">
+                <img src="images/bags/fusion.jpg" alt=" Fusion">
+                <img src="images/bags/incognito.jpg" alt="Incognito">
+                <img src="images/bags/red-roof.jpg" alt="Red Roof">
+                <img src="images/bags/red-rooster.jpg" alt="Red Rooster">
+                <img src="images/bags/sunray-cafe.jpg" alt="Sunray Cafe">
+                <img src="images/bags/west-star.jpg" alt="West Star">
+                <img src="images/bags/xl-productions.jpg" alt="XL Productions">
+            </div>
         </div>
     </div>
+
+    <!----------------------------------------------------------------------- SCRIPTS -------------------------------------------------------------------------->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <!-- <script src="jquery/jquery.slim.min.js"></script>
+    <script src="popper/popper.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script> -->
+
+    <!-- Personal Scripts -->
+    <script src="scripts.js"></script>
 </body>
+
 </html>

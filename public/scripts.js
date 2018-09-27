@@ -1,56 +1,95 @@
-function openGallery(evt, galleryID) {
-    // Declare all variables
-    var i, galleryContent, galleryLinks;
+function sendMail() {
+    var fname = $("#fname").val();
+    var lname = $("#lname").val();
+    var email = $("#email").val();
+    // var phone = $("#phone").val();
+    var details = $("#details").val();
+    
+    if(validateMail(fname, lname, email, details)) {
+        $("#mail-loader").show(); // show spinner
+        var request = $.ajax({
+            type: "POST",
+            url: "/send-email",
+            data: {
+                fname: $("#fname").val(),
+                lname: $("#lname").val(),
+                email: $("#email").val(),
+                phone: $("#phone").val(),
+                details: $("#details").val(),
+            },
+            dataType: "json"
+        });
+        
 
-    // Get all elements with class="gallery shown" and hide them
-    galleryContent = document.getElementsByClassName("gallery col-12 shown");
-    for (i = 0; i < galleryContent.length; i++) {
-        galleryContent[i].className = "gallery col-12";
+        // Email sent
+        request.done((res) => {
+            $("#mail-loader").hide(); // hide spinner
+            if (res.code == 200) {
+                $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                    $("#success-alert").slideUp(500);
+                });
+                clearMailFields();
+            } else if (res.code == 500) {
+                $("#fail-alert").fadeTo(5000, 500).slideUp(500, function () {
+                    $("#fail-alert").slideUp(500);
+                });
+            }
+        });
+    
+        // Email failed
+        request.fail((jqXHR, res) => {
+            $("#mail-loader").hide(); // hide spinner
+            console.log(res.msg);
+            $("#fail-alert").fadeTo(5000, 500).slideUp(500, function () {
+                $("#fail-alert").slideUp(500);
+            });
+        });
     }
-
-    // Get all elements with class="galleryLinks" and remove the class "active"
-    galleryLinks = document.getElementsByClassName("navlink");
-    for (i = 0; i < galleryLinks.length; i++) {
-        galleryLinks[i].className = galleryLinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(galleryID).className = "gallery col-12 shown";
-    evt.currentTarget.className += " active";
 }
 
-function sendMail() {
-    var request = $.ajax({
-        type: "POST",
-        url: "/send-email",
-        data: {
-            fname: $("#fname").val(),
-            lname: $("#lname").val(),
-            email: $("#email").val(),
-            phone: $("#phone").val(),
-            details: $("#details").val(),
-        },
-        dataType: "json"
-    });
+function validateMail(fname, lname, email, details) {
+    var isValidArray = [];
+    if (fname == '' || fname == undefined || fname == null) { // fname is blank
+        $("#fname-required").css("display", "inline");
+        $("#fname").addClass("is-invalid"); 
+        isValidArray.push(false);
+    } else { // field is valid
+        $("#fname-required").css("display", "none");
+        $("#fname").removeClass("is-invalid");
+    } 
 
-    // Email sent
-    request.done((res) => {
-        $("#emailAlert").text(res.msg);
-        if (res.code == 200) {
-            $("#emailAlert").addClass("success");
-        } else if(res.code == 500) {
-            $("#emailAlert").addClass("failure");
-        }
-    });
+    if(lname == '' || lname == undefined || lname == null) { // lname is blank
+        $("#lname-required").css("display", "inline");
+        $("#lname").addClass("is-invalid");
+        isValidArray.push(false);
+    } else { // field is valid
+        $("#lname-required").css("display", "none");
+        $("#lname").removeClass("is-invalid");
+    }
+    
+    if(email == '' || email == undefined || email == null) { // email is blank
+        $("#email-required").css("display", "inline");
+        $("#email").addClass("is-invalid");
+        isValidArray.push(false);
+    } else { // field is valid
+        $("#email-required").css("display", "none");
+        $("#email").removeClass("is-invalid");
+    }
+    
+    if(details == '' || details == undefined || details == null) {  // message is blank
+        $("#message-required").css("display", "inline");
+        $("#details").addClass("is-invalid");
+        isValidArray.push(false);
+    } else { // field is valid
+        $("#message-required").css("display", "none");
+        $("#details").removeClass("is-invalid");
+    }
 
-    // Email failed
-    request.fail((jqXHR, res) => {
-        console.log(res.msg);
-        $("#emailAlert").text("Email failed to send. Please try again or email us directly at email@email.com");
-        $("#emailAlert").addClass("failure");
-    });
-
-    clearMailFields();
+    if (isValidArray.includes(false)) { // if any field is invalid
+        return false;
+    }
+    return true; // all fields are invalid
+    
 }
 
 function clearMailFields() {
@@ -60,3 +99,8 @@ function clearMailFields() {
     $("#phone").text("");
     $("#details").text("");
 }
+
+// Hide navbar collapse on link click
+$('.navbar-nav>li>a').on('click', function () {
+    $('.navbar-collapse').collapse('hide');
+});

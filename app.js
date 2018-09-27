@@ -25,8 +25,8 @@ var transporter = nodeMailer.createTransport({
 app.post('/send-email', (req, res) => {
     var emailHtml = `<p>${req.body.details}</p><h2>Contact Info</h2><p><strong>Email: </strong>${req.body.email}</p>`;
     var phone = req.body.phone;
-    if (phone != null || phone != '' || phone != undefined) {
-        emailHtml + `<p><strong>Phone: </strong>${req.body.phone}</p>`;
+    if (phone != null || phone != '' || phone != undefined) { // if there is a phone number show it in email
+        emailHtml + `<p><strong>Phone: </strong>${phone}</p>`;
     }
 
     res.setHeader('Content-Type', 'application/json');
@@ -48,6 +48,11 @@ app.post('/send-email', (req, res) => {
         }
     });
 });
+
+// Serving Bootstrap files
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/popper', express.static(__dirname + '/node_modules/popper.js/dist'));
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 
 // Serving static files and setting home page
 app.use(express.static(__dirname + '/public'));
