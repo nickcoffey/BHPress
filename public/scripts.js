@@ -28,7 +28,6 @@ function sendMail() {
                 $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
                     $("#success-alert").slideUp(500);
                 });
-                clearMailFields();
             } else if (res.code == 500) {
                 $("#fail-alert").fadeTo(5000, 500).slideUp(500, function () {
                     $("#fail-alert").slideUp(500);
@@ -44,6 +43,7 @@ function sendMail() {
                 $("#fail-alert").slideUp(500);
             });
         });
+        clearMailFields();
     }
 }
 
@@ -93,14 +93,30 @@ function validateMail(fname, lname, email, details) {
 }
 
 function clearMailFields() {
-    $("#fname").text("");
-    $("#lname").text("");
-    $("#email").text("");
-    $("#phone").text("");
-    $("#details").text("");
+    $("#fname").val("");
+    $("#lname").val("");
+    $("#email").val("");
+    $("#phone").val("");
+    $("#details").val("");
 }
 
 // Hide navbar collapse on link click
 $('.navbar-nav>li>a').on('click', function () {
     $('.navbar-collapse').collapse('hide');
 });
+
+window.onload = function typewriter() {
+    var textArray = "bh | press".split('');
+    var text = '';
+    var header = '';
+    textArray.forEach((character, index, array) => {
+        this.setTimeout(() => {
+            text = text + character;
+            header = text + '|';
+            $("#desktop-header").text(header);
+            if (index === array.length - 1) { // on last loop remove cursor
+                $("#desktop-header").text(text);
+            }
+        }, index * 250);
+    });
+}

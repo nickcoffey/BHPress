@@ -23,10 +23,10 @@ var transporter = nodeMailer.createTransport({
 
 // NodeMailer API Call
 app.post('/send-email', (req, res) => {
-    var emailHtml = `<p>${req.body.details}</p><h2>Contact Info</h2><p><strong>Email: </strong>${req.body.email}</p>`;
+    var emailHtml = `<p>${req.body.details}</p><h3>Contact Info</h3><p><strong>Email: </strong>${req.body.email}</p>`;
     var phone = req.body.phone;
-    if (phone != null || phone != '' || phone != undefined) { // if there is a phone number show it in email
-        emailHtml + `<p><strong>Phone: </strong>${phone}</p>`;
+    if (phone != null && phone != '' && phone != undefined) { // if there is a phone number show it in email
+        emailHtml = emailHtml + `<p><strong>Phone: </strong>${phone}</p>`;
     }
 
     res.setHeader('Content-Type', 'application/json');
